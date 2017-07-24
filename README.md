@@ -13,8 +13,8 @@ Após a participação neste curso você será capaz de criar projetos e sistema
 ### Conteúdo inicial
 
 - [ ] Apresentação do curso
-- [ ] Conceitos básicos de AngularJS
-- [ ] Ambiente de desenvolvimento
+- [ ] [Conceitos básicos de AngularJS](docs/README.md#conceitos-básicos-de-angularjs)
+- [ ] [Ambiente de desenvolvimento](docs/README.md#ambiente-de-desenvolvimento)
 - [ ] Primeiro projeto
 - [ ] Primeiro Controller
 - [ ] ECMAScript 2015+
@@ -44,5 +44,14 @@ Após a participação neste curso você será capaz de criar projetos e sistema
 <br>
 
 ---
-**@Author** Thiago Bitencourt
-<<thiago.mbitencourt@gmail.com>>
+## Edições
+
+| * | Início | Fim | Local | Horários | Alunos | Conteúdo |
+|---|---|---|---|---|---|---|
+|   |   |   |   |   |   |   |
+
+<br>
+---
+## Autor
+
+**Thiago Bitencourt** <<thiago.mbitencourt@gmail.com>>
