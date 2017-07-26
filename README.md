@@ -52,6 +52,7 @@ Após a participação neste curso você será capaz de criar projetos e sistema
 
 <br>
 ---
+
 ## Autor
 
 **Thiago Bitencourt** <<thiago.mbitencourt@gmail.com>>
