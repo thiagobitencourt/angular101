@@ -14,7 +14,7 @@ Com AngularJS também temos a facilidade de manipular o DOM de uma página HTML,
 
 AngularJS é uma ferramente de desenvolvimento _frontend_ e por isso todo o código que implementados precisa apenas de um navegador Web para ser executado, com isso podemos contruir aplicações completas independetes de servidores e/ou aplicações _backend_.
 
-Por se tratar de um _framework_, entendemos que se trata de uma aplicação web particular a qual o nosso código irá se encaixar e portanto devemos seguir o modelo de desenvolvimento do framework o que em alguns casos temos que pagar o preço abrindo mão de certa flexibilidade. Por outro lado, o Angular nos oferece um alto nível de abstração de desenvolvimento e com isso conseguimos alcançar um maior nível de produtividade.
+Por se tratar de um _framework_, entendemos que se trata de uma aplicação web particular a qual o nosso código irá se encaixar e portanto devemos seguir o modelo de desenvolvimento do framework o que em alguns casos temos que pagar o preço abrindo mão de certa flexibilidade. Por outro lado, o AngularJS nos oferece um alto nível de abstração de desenvolvimento e com isso conseguimos alcançar um maior nível de produtividade.
 
 
 #### Pra que serve?
@@ -32,7 +32,19 @@ Suas principais características são:
 
 #### Como funciona?
 
+Umas das principais características do framework é o _Two-Way Data Binding_ e por isso precisamos entender bem esta funcionalidade antes de partirmos para a "mão na massa".
 
+Data binding é a "junção" entre o _model_ e a _view_, ou seja, a junção entre alguma informação que temos no nosso código javascript como, por exemplo, um objeto e a apresentação desta informação na tela, através do template HTML.
+
+A imagem a baixo apresenta como acontece este "_bind_" do model para que seja apresentado na _view_. 
+
+![onewaybind](assets/img/onewaybind.png)
+
+Temos o template onde é definida a "interface gráfica" da aplicação e o _model_ que representa os dados que queremos apresentar para o usuário. Então, a junção da definição da interface com os dados que queremos apresentar (_bind_) resulta na _view_ que é a interface "final" que será apresentada para o usuário.
+
+Neste modelo apresentado pela imagem acontece o que é chamado de _One-Way Data Binding_, ou seja, uma vez que essa junção ocorre qualquer alteração que acontecer no _model_ (informações que está sendo apresentada) não será refletida na _view_ ou então, qualquer alteração ou interação que o usuário tiver com a informação não será refletida no _model_ e então as informações estarão desatualizadas. 
+
+Portanto, os programadores terão de se preocupar em implementar mecanismos para manter esta integração entre o _model_ e a _view_ para toda informação esteja sempre sincronizada.
 
 ### Ambiente de desenvolvimento
 
@@ -43,6 +55,7 @@ Antes de mais nada vamos utilizar alguma IDE, ou seja, algum editor de texto com
 - [Atom](https://atom.io/) - Github
 - [Visual Studio Code](https://code.visualstudio.com/) - Microsoft
 - [Sublime text](https://www.sublimetext.com/) - ~~Foi o tempo~~
+- [WebStorm](https://www.jetbrains.com/webstorm/) - Jetbrains
 
 Para baixar qualquer uma destas ferramentas acesse a página de _download_ clicando em um dos links acima e faça a instalação. Você não deve encontrar dificuldade com isso, é biaxar, instalar, abrir e usar. 
 
