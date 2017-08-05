@@ -1,12 +1,8 @@
-# Conteúdo do curso de angular 1.x
+# Conceitos básicos de AngularJS 
 
+[:arrow_left: Voltar](../README.md)
 
-**Conteúdo inicial**
-
-### Conceitos básicos de AngularJS
-
-
-#### O que é?
+## O que é?
 
 É um **Framework** estrutural para aplicações web dinâmicas. Permite usar o próprio HTML como linguagem de template, ou seja, a definição da estrutura da página escrita utilizando HTML. Além disso, o AngularJS permite extender a linguagem HTML padrão para melhor expressar os componentes da aplicação de forma simples e sucinta.
 
@@ -17,7 +13,7 @@ AngularJS é uma ferramente de desenvolvimento _frontend_ e por isso todo o cód
 Por se tratar de um _framework_, entendemos que se trata de uma aplicação web particular a qual o nosso código irá se encaixar e portanto devemos seguir o modelo de desenvolvimento do framework o que em alguns casos temos que pagar o preço abrindo mão de certa flexibilidade. Por outro lado, o AngularJS nos oferece um alto nível de abstração de desenvolvimento e com isso conseguimos alcançar um maior nível de produtividade.
 
 
-#### Pra que serve?
+## Pra que serve?
 
 AngularJS é um framework para construções de soluções completas de _clien-side_, ou seja, é utilizado para a implementação de toda a parte que corresponde ao lado cliente de uma aplicação web e que irá rodar em um navegador.
 
@@ -30,7 +26,7 @@ Suas principais características são:
 - Testabilidade, já que todo o framework foi construido pensando em _TDD (Test Driven Development_.
 
 
-#### Como funciona?
+## Como funciona?
 
 Umas das principais características do framework é o _Two-Way Data Binding_ e por isso precisamos entender bem esta funcionalidade antes de partirmos para a "mão na massa".
 
@@ -59,26 +55,4 @@ O template definido utilizando HTML será compilado e apresentado no browser e, 
 Pelo fato de a _view_ ser apenas uma projeção do _model_, temos um _controller_ completamente separado da _view_ e sem conhecimento desta, ou seja, dentro do _controller_ não teremos acesso direto a _view_ (ou ao HTML) mas iremos apenas interagir com o _model_ (os dados da aplicação).
 
 
-<br>
-
-### Ambiente de desenvolvimento
-
-Como mensionado anteriormente ao desenvolver uma aplicação com AngularJS precisamos apenas de um navegador web para executar nossas aplicações. Porém, para desenvolvermos as nossas aplicações vamos precisar de algumas ferramentas para nos ajudar e nos dar ainda mais produtividade.
-
-Antes de mais nada vamos utilizar alguma IDE, ou seja, algum editor de texto com "super poderes". Algumas sugestões são: 
-
-- [Atom](https://atom.io/) - Github
-- [Visual Studio Code](https://code.visualstudio.com/) - Microsoft
-- [Sublime text](https://www.sublimetext.com/) - ~~Foi o tempo~~
-- [WebStorm](https://www.jetbrains.com/webstorm/) - Jetbrains
-
-Para baixar qualquer uma destas ferramentas acesse a página de _download_ clicando em um dos links acima e faça a instalação. Você não deve encontrar dificuldade com isso, é biaxar, instalar, abrir e usar. 
-
-Estes editores de texto são apenas sugestões, existem muitos outros mundo a fora, use aquele com o qual se sentir mais confortável. E claro que é sempre possível usar um bom e velho bloco de notas (use por sua conta e risco).
-
-Além de um editor de texto, vamos precisar também das seguintes ferramentas:
-
-- GIT
-- NodeJS
-- NPM
-
+[:arrow_left: Voltar](../README.md) | [:arrow_up: topo](#conceitos-básicos-de-angularjs)

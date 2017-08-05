@@ -13,8 +13,8 @@ Após a participação neste curso você será capaz de criar projetos e sistema
 ### Conteúdo inicial
 
 - [ ] Apresentação do curso
-- [ ] [Conceitos básicos de AngularJS](docs/README.md#conceitos-básicos-de-angularjs)
-- [ ] [Ambiente de desenvolvimento](docs/README.md#ambiente-de-desenvolvimento)
+- [x] [Conceitos básicos de AngularJS](docs/conceitos-basicos.md)
+- [ ] [Ambiente de desenvolvimento](docs/ambiente-desemvolvimento.md)
 - [ ] Primeiro projeto
 - [ ] Primeiro Controller
 - [ ] ECMAScript 2015+
@@ -51,7 +51,6 @@ Após a participação neste curso você será capaz de criar projetos e sistema
 |   |   |   |   |   |   |   |
 
 <br>
----
 
 ## Autor
 
