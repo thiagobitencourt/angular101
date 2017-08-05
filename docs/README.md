@@ -36,7 +36,7 @@ Umas das principais características do framework é o _Two-Way Data Binding_ e 
 
 Data binding é a "junção" entre o _model_ e a _view_, ou seja, a junção entre alguma informação que temos no nosso código javascript como, por exemplo, um objeto e a apresentação desta informação na tela, através do template HTML.
 
-A imagem a baixo apresenta como acontece este "_bind_" do model para que seja apresentado na _view_. 
+A imagem abaixo apresenta como acontece este "_bind_" do model para que seja apresentado na _view_. 
 
 ![onewaybind](assets/img/onewaybind.png)
 
@@ -44,7 +44,22 @@ Temos o template onde é definida a "interface gráfica" da aplicação e o _mod
 
 Neste modelo apresentado pela imagem acontece o que é chamado de _One-Way Data Binding_, ou seja, uma vez que essa junção ocorre qualquer alteração que acontecer no _model_ (informações que está sendo apresentada) não será refletida na _view_ ou então, qualquer alteração ou interação que o usuário tiver com a informação não será refletida no _model_ e então as informações estarão desatualizadas. 
 
-Portanto, os programadores terão de se preocupar em implementar mecanismos para manter esta integração entre o _model_ e a _view_ para toda informação esteja sempre sincronizada.
+Portanto, os programadores terão de se preocupar em implementar mecanismos para manter esta integração entre o _model_ e a _view_ para que toda informação esteja sempre sincronizada.
+
+**_Two-Way Data Binding_**
+
+Com AngularJS temos a funcionalidade de _Two-Way Data Binding_ que irá criar e gerenciar esta sincronização entre o _model_ e a _view_ de forma automática, sem que precisamos nos preocupar em escrever código para manter as coisas atualizadas. Com esta funcionalidade, toda mudança que acontecer em uma informação que esta no _model_ será refletira instântaneamente no que vemos na tela (na _view_), assim como tudo o que acontecer na tela que tiver interação com essa informação será também refletida automaticamente no _model_. Desta forma, podemos tratar o _model_ como sendo uma fonte confiável de informação em toda a aplicação, já que toda alteração em algum dado será refletido em toda a _view_.
+
+A imagem abaixo representa como acontece o _Two-Way Data Binding_ entre o _model_ e a _view_.
+
+![twowaybind](assets/img/twowaybind.png)
+
+O template definido utilizando HTML será compilado e apresentado no browser e, a partir deste momento, teremos uma _view_ viva que irá refletir no _model_ qualquer mudança que ocorra e qualquer mudançã no _model_ será propagada para a _view_. Para simplificar podemos pensar na _view_ como sendo simplesmente uma projação do estado atual do _model_, ou seja, dos dados que temos em um controlador (_controller_). 
+
+Pelo fato de a _view_ ser apenas uma projeção do _model_, temos um _controller_ completamente separado da _view_ e sem conhecimento desta, ou seja, dentro do _controller_ não teremos acesso direto a _view_ (ou ao HTML) mas iremos apenas interagir com o _model_ (os dados da aplicação).
+
+
+<br>
 
 ### Ambiente de desenvolvimento
 
