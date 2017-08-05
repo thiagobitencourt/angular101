@@ -55,4 +55,4 @@ O template definido utilizando HTML será compilado e apresentado no browser e, 
 Pelo fato de a _view_ ser apenas uma projeção do _model_, temos um _controller_ completamente separado da _view_ e sem conhecimento desta, ou seja, dentro do _controller_ não teremos acesso direto a _view_ (ou ao HTML) mas iremos apenas interagir com o _model_ (os dados da aplicação).
 
 
-[:arrow_left: Voltar](../README.md) | [:arrow_up: topo](#conceitos-básicos-de-angularjs)
+[:arrow_left: Voltar](../README.md) | [:arrow_up: Topo](#conceitos-básicos-de-angularjs)

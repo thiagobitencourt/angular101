@@ -21,13 +21,17 @@
 
 ### Ambiente de desenvolvimento
 
+- IDE
 - GIT
 - NodeJS
 - NPM
+- Navegador
 
 ### Primeiro projeto
 
 - Adicionando AngularJS ao projeto
+- Primeiro exemplo
+- Entendendo melhor
 - Criando uma aplicação AngularJS (ng-app)
 - Conhecendo as primeiras diretivas
 

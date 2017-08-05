@@ -60,4 +60,4 @@ Com o Google Chrome teremos um terminal de desenvolvedor que irá nos auxiliar b
 Pronto, por enquanto isso será suficiente para já começarmos a "brincar" com desenvolvimento Web.
 
 
-[:arrow_left: Voltar](../README.md) | [:arrow_up: topo](#ambiente-de-desenvolvimento)
+[:arrow_left: Voltar](../README.md) | [:arrow_up: Topo](#ambiente-de-desenvolvimento)
