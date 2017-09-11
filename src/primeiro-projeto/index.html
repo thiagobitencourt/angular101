@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <title>Primeiro projeto</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
     
-    </body>
+    <div ng-controller="mainController as vm">
+        <h1> Olá {{ vm.nome }} </h1>
+
+        <input type="text" placeholder="Insira seu nome" ng-model="vm.nome">
+
+        <button ng-click="vm.clicou()">Clicar!</button>
+
+    </div>
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script> -->
+    <script src="../../node_modules/angular/angular.min.js"></script>
+    <script>
+        
+        angular.module('app', [])
+            .controller('mainController', function() {
+                var vm = this;
+
+                vm.nome = "Thiago";
+
+                vm.clicou = function() {
+                    console.log(vm.nome);
+                }
+
+        })
+
+    </script>
+
+</body>
 </html>
