@@ -5,36 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <style>
+        .zebrado {
+            background-color: #ccc;
+        }
+    </style>
+
 </head>
 <body>
     
     <div ng-controller="mainController as vm">
-        <h1> Olá {{ vm.nome }} </h1>
+        <h1> Olá <strong ng-bind="vm.nome"></strong></h1>
+        <input type="text" placeholder="Insira seu nome" ng-model="vm.nome" ng-change="vm.mudou()">
 
-        <input type="text" placeholder="Insira seu nome" ng-model="vm.nome">
+        <input type="checkbox" ng-model="vm.desabilitarBotao">
+        <button ng-click="vm.clicou()" ng-disabled="vm.desabilitarBotao" >Clicar!</button>
 
-        <button ng-click="vm.clicou()">Clicar!</button>
+        <label>Zebrar:</label>
+        <input type="checkbox" ng-model="vm.soPares"> 
+        <span ng-if="vm.soPares">Pares</span>
+        <span ng-if="!vm.soPares">Impares</span>
+
+        <ul>
+            <li ng-repeat="filme in vm.filmes">
+                <div ng-class="{'zebrado': $even && vm.isSoPares() || $odd && !vm.isSoPares() }">
+                    <strong>Nome: </strong><span>{{ filme.nome }}</span> - 
+                    <strong>Ano: </strong><span>{{ filme.ano }}</span>
+                </div>
+            </li>
+        </ul>
+    
+        <select ng-model="vm.filmeFavorito" ng-options="filme.nome as filme.nome for filme in vm.filmes">
+            <!-- <option ng-repeat="filme in vm.filmes" value="{{ filme.ano }}">{{ filme.nome }}</option> -->
+        </select>
+
+        <br />
+        Hoje: <span>{{ vm.hoje | date:'dd/MM/yyyy hh:mm:ss' }}</span>
+        Salário: <span>{{ 10000 | currency:'R$':2 }}</span>
+        
+        <br />
+        <pre>
+            {{ vm.filmes | json }}
+        </pre>
 
     </div>
 
-
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script> -->
     <script src="../../node_modules/angular/angular.min.js"></script>
-    <script>
-        
-        angular.module('app', [])
-            .controller('mainController', function() {
-                var vm = this;
-
-                vm.nome = "Thiago";
-
-                vm.clicou = function() {
-                    console.log(vm.nome);
-                }
-
-        })
-
-    </script>
-
+    
+    <script src="./app.module.js"></script>
+    <script src="./app.controller.js"></script>
 </body>
 </html>
