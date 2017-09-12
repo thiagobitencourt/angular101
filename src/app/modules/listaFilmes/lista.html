@@ -1,0 +1,5 @@
+<ul>
+    <li ng-repeat="filme in vm.filmes" 
+        ng-click="vm.onFilmeClick({ filme: filme })"
+    > {{ filme.nome }} </li>
+</ul>
