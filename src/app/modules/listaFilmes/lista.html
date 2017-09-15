@@ -1,5 +1,10 @@
 <ul>
-    <li ng-repeat="filme in vm.filmes" 
-        ng-click="vm.onFilmeClick({ filme: filme })"
-    > {{ filme.nome }} </li>
+    <li ng-repeat="filme in $ctrl.filmes | nomeFilter:$ctrl.busca | orderBy: ['ano', '-nome']"
+        ng-click="$ctrl.onFilmeClick({ filme: filme })">
+        <strong>Nome: </strong>{{ filme.nome | uppercase }} <br />
+        <strong>Categoria: </strong>{{ filme.categoria | categoria | uppercase }} <br />
+        <strong>Ano: </strong>{{ filme.ano }} <br />
+        <strong>Lançamento: </strong>{{ filme.lancamento | date:'dd/MM/yyyy' }} <br />
+        <strong>Arrecadação: </strong>{{ filme.arrecadacao | number:2 }} <br />
+    </li>
 </ul>

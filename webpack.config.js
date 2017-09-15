@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const packageJson = require('./package.json');
 
 let config = {
@@ -25,14 +26,30 @@ let config = {
                 exclude: [
                   /index\.html$/
                 ]
-            }
+            },
+            {
+                test: /\.scss$/,
+                use: ['css-hot-loader'].concat(ExtractTextWebpackPlugin.extract({
+                  use: ['css-loader', 'sass-loader'],
+                  fallback: 'style-loader'
+                }))
+            },
+            { 
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+                loader: 'url-loader?limit=100000'
+            }      
         ]
     },
     plugins: [
+        new ExtractTextWebpackPlugin('styles.css'),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             title: packageJson.name,
             version: packageJson.version
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     ],
     devServer: {

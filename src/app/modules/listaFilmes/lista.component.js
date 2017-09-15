@@ -2,8 +2,8 @@ import template from './lista.html';
 
 const listaComponent = {
     template,
-    controllerAs: 'vm',
     bindings: {
+        busca: '<',
         filmes: '=',
         onFilmeClick: '&' // @, =, &, <
     }

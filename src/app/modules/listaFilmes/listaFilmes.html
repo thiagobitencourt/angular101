@@ -1,4 +1,14 @@
 <div>
-    <h1> Lista dos meus filmes favoritos </h1> 
-    <lista filmes="vm.filmes" on-filme-click="vm.clicouNoFilme(filme)"></lista>
+    <h1 class="listaFilmes"> Lista dos meus filmes favoritos </h1> 
+
+    <input type="text" 
+        ng-model="vm.buscaFilme"
+        ng-model-options="{ debounce: 300 }"
+        placeholder="Pesquisar filme"
+    >
+
+    <lista 
+        busca="vm.buscaFilme"
+        filmes="vm.filmes" 
+        on-filme-click="vm.clicouNoFilme(filme)"></lista>
 </div>
