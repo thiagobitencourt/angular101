@@ -1,11 +1,15 @@
 <div>
     <h1 class="listaFilmes"> Lista dos meus filmes favoritos </h1> 
 
-    <input type="text" 
-        ng-model="vm.buscaFilme"
-        ng-model-options="{ debounce: 300 }"
-        placeholder="Pesquisar filme"
-    >
+    <div class="form-group">
+        <label for="inputSearch">Pesquisar filme</label>
+        <input type="text" class="form-control" id="inputSearch" 
+            ng-model="vm.buscaFilme"
+            ng-model-options="{ debounce: 300 }"
+            placeholder="Pesquisar filme">
+    </div>
+
+    <button class="btn btn-primary" ng-click="vm.adicionarFilme()">Adicionar Filme</button>
 
     <lista 
         busca="vm.buscaFilme"
