@@ -1,66 +1,67 @@
-
-function listFilmesService() {
-
-    const categorias = [
-        { nome: 'Ação', valor: 'acao' },
-        { nome: 'Comédia', valor: 'comedia' },
-        { nome: 'Romance', valor: 'romance' },
-        { nome: 'Terror', valor: 'terror' }
-    ];
-
-    const filmes = [
-        { 
-            nome: "Eu, eu mesmo e irene", 
-            ano: "1975",
-            lancamento: new Date(),
-            arrecadacao: 5000000,
-            categoria: categorias[2]
-        },
-        { 
-            nome: "Poeira em alto", 
-            ano: "1993",
-            lancamento: new Date(),
-            categoria: categorias[1]
-        },
-        { 
-            nome: "As longas tranças de um careca",
-            ano: "1993",
-            lancamento: new Date(),
-            categoria: categorias[3]
-        },
-        { 
-            nome: "Rambo III",
-            ano: "2005",
-            lancamento: new Date(),
-            categoria: categorias[0]
-        }
-    ];
-
-    // this.obterListaFilmes = () => {
-    //     return filmes;
-    // }
-
-    // this.obterCategorias = () => {
-    //     return categorias;
-    // }
-
-    // this.adicionarFilme = filme => {
-    //     filmes.push(filme);
-    // }
+function listFilmesService($http, $q, urlBase) {
+    const categorias = [];
+    const filmes = [];
 
     return {
-        adicionarFilme(filme) {
-            filmes.push(filme);
-        },
+        adicionarFilme,
+        obterCategorias,
+        obterListaFilmes
+    }
 
-        obterCategorias() {
-            return categorias;
-        },
-        
-        obterListaFilmes() {
-            return filmes;
-        }
+    function obterListaFilmes() {
+        // chamada http backend.
+        return $http.get(urlBase + '/59ceaac5130000080106084f')
+            .then(result => {
+                let filmes = result.data || [];
+                obterCategorias()
+                    .then(categorias => {
+                        filmes.map(filme => {
+                            filme.categoria = categorias.find(
+                                categoria => categoria.valor === filme.categoria)
+                        });
+                    });
+                return filmes;
+            });
+    }
+
+    function obterCategorias() {
+        // return categorias;
+            return $http.get(urlBase + '/59ceb010130000ce00060859')
+            .then(result => result.data || []);
+    }
+
+    function adicionarFilme(filme) {
+
+        return $q.when("resolvido");
+        // return $q.reject("rejeitado");
+
+        // return $q((resolve, reject) => {
+        //     filmes.push(filme);
+        //     return resolve("2345678");
+        //     // return reject('');
+        // });
+
+        // const deferred = $q.defer();
+        //     filmes.push(filme);
+        //     deferred.resolve( "2345678" );
+        // return deferred.promise;
+
+        return $http.post('http://urlmassa.com.br', filme)
+        .then(result => {
+                filme.id = result.data.id; // id: 16;
+                filmes.push(filme);
+            });
+    }
+
+    function removerFilme(filmeId) {
+        return $http.delete('http://urlmassa.com.br/'+ filmeId);
+    }
+
+    function atualizarFilme(filme) {
+        return $http.put('http://urlmassa.com.br/' + filme.id, filme);
+        // $http.patch();
     }
 }
 
-export default listFilmesService;
+// listFilmesService.$inject = ['$http'];
+export default [ '$http', '$q', 'urlBase', listFilmesService ];

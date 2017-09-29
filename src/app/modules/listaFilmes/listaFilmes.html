@@ -11,6 +11,10 @@
 
     <button class="btn btn-primary" ng-click="vm.adicionarFilme()">Adicionar Filme</button>
 
+    <div class="alert alert-danger" ng-if="vm.hasError">
+        <p> Deu ruim -> {{ vm.hasError }}</p>
+    </div>
+
     <lista 
         busca="vm.buscaFilme"
         filmes="vm.filmes" 

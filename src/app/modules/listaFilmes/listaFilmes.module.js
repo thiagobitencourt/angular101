@@ -13,4 +13,5 @@ export default angular
     // .factory('listaFilmeService', listaFilmeService)
     .filter('categoria', categoriaFilter)
     .filter('nomeFilter', nomeFilter)
+    .constant('urlBase', 'http://www.mocky.io/v2')
     .name;
