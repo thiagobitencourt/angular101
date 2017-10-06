@@ -2,14 +2,21 @@
 function filmesFormConfig($stateProvider) {
     $stateProvider.state({
         name: 'form',
-        url: '/form',
+        url: '/form?nome',
         component: 'filmesForm',
         params: {
             filme: undefined
         },
         resolve: {
-            filme: ['$stateParams', 
-                $stateParams => $stateParams.filme
+            filme: ['listaFilmeService', '$stateParams', 
+                (listaFilmeService, $stateParams) => {
+                    console.log($stateParams);
+                    if($stateParams.nome) {
+                        return listaFilmeService
+                            .obterFilmePorNome($stateParams.nome);
+                    }
+                    return {};
+                }
             ],
             categorias: ['listaFilmeService', 
                 (listaFilmeService) => listaFilmeService

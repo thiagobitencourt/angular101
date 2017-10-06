@@ -5,7 +5,19 @@ function listFilmesService($http, $q, urlBase) {
     return {
         adicionarFilme,
         obterCategorias,
-        obterListaFilmes
+        obterListaFilmes,
+        obterFilmePorNome
+    }
+
+    function obterFilmePorNome(nome) {
+        return $q.when(
+            { 
+                "nome": "Ferrou, acabaram as ideias!",
+                "ano": "1993",
+                "lancamento": "2017-09-29T20:14:45.557Z",
+                "categoria": "terror"
+            }
+        );
     }
 
     function obterListaFilmes() {

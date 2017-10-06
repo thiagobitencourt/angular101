@@ -1,11 +1,15 @@
 import template from './filmesForm.html';
 
 /* @ngInject */
-function controller($stateParams) {
+function controller($state, $stateParams) {
     const vm = this;
     vm.$onInit = onInit;
 
     function onInit() {
+
+        if(!vm.filme) {
+            $state.go("filmes");
+        }
 
         console.log(vm.filme);
         console.log(vm.categorias);
@@ -14,7 +18,7 @@ function controller($stateParams) {
         // vm.filme = $stateParams.filme;
     }
 }
-controller.$inject = ['$stateParams'];
+controller.$inject = ['$state', '$stateParams'];
 
 export default {
     template,

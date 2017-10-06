@@ -15,7 +15,7 @@ function listFilmesController($state, listaFilmeService) {
 
     function editarFilme(filme) {
         console.log(filme);
-        $state.go('form', { filme });
+        $state.go('form', { nome: filme.nome, filme });
     }
 
     function obterCategorias() {
