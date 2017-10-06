@@ -1,10 +1,29 @@
-<ul>
-    <li ng-repeat="filme in $ctrl.filmes | nomeFilter:$ctrl.busca | orderBy: ['ano', '-nome']"
-        ng-click="$ctrl.onFilmeClick({ filme: filme })">
-        <strong>Nome: </strong>{{ filme.nome | uppercase }} <br />
-        <strong>Categoria: </strong>{{ filme.categoria | categoria | uppercase }} <br />
-        <strong>Ano: </strong>{{ filme.ano }} <br />
-        <strong>Lançamento: </strong>{{ filme.lancamento | date:'dd/MM/yyyy' }} <br />
-        <strong>Arrecadação: </strong>{{ filme.arrecadacao | number:2 }} <br />
-    </li>
-</ul>
+<section>
+    <div ng-repeat="filme in $ctrl.filmes | nomeFilter:$ctrl.busca | orderBy: ['ano', '-nome']">
+        <div class="row filmes">
+            <div class="col-md-4">
+                <strong>Nome: </strong>{{ filme.nome | uppercase }}
+                <strong>Categoria: </strong>{{ filme.categoria | categoria | uppercase }}
+            </div>
+
+            <div class="col-md-4">
+                <strong>Ano: </strong>{{ filme.ano }} <br />
+                <strong>Lançamento: </strong>{{ filme.lancamento | date:'dd/MM/yyyy' }}
+            </div>
+
+            <div class="col-md-4">
+                <strong>Arrecadação: </strong>{{ filme.arrecadacao | number:2 }}
+            </div>
+
+            <div>
+                <button 
+                    type="button"
+                    class="btn btn-link"
+                    ng-click="$ctrl.onFilmeClick({ filme: filme })"
+                ><i class="glyphicon glyphicon-pencil"></i>
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
