@@ -1,24 +1,22 @@
 import template from './filmesForm.html';
 
 /* @ngInject */
-function controller($state, $stateParams) {
+function controller($state, listaFilmeService) {
     const vm = this;
     vm.$onInit = onInit;
+    vm.salvarFilme = salvarFilme;
 
-    function onInit() {
+    function onInit() { }
 
-        if(!vm.filme) {
-            $state.go("filmes");
-        }
-
-        console.log(vm.filme);
-        console.log(vm.categorias);
-
-        // console.log($stateParams.filme);
-        // vm.filme = $stateParams.filme;
+    function salvarFilme(filme) {
+        listaFilmeService.adicionarFilme(filme)
+            .then(id => {
+                $state.go('filmes');
+            });
     }
+
 }
-controller.$inject = ['$state', '$stateParams'];
+controller.$inject = ['$state', 'listaFilmeService'];
 
 export default {
     template,

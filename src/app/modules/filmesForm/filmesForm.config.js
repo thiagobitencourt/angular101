@@ -10,7 +10,6 @@ function filmesFormConfig($stateProvider) {
         resolve: {
             filme: ['listaFilmeService', '$stateParams', 
                 (listaFilmeService, $stateParams) => {
-                    console.log($stateParams);
                     if($stateParams.nome) {
                         return listaFilmeService
                             .obterFilmePorNome($stateParams.nome);

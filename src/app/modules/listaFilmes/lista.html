@@ -1,5 +1,5 @@
 <section>
-    <div ng-repeat="filme in $ctrl.filmes | nomeFilter:$ctrl.busca | orderBy: ['ano', '-nome']">
+    <div ng-repeat="filme in $ctrl.filmes | nomeFilter:$ctrl.busca | orderBy: ['ano', '-nome'] track by $index">
         <div class="row filmes">
             <div class="col-md-4">
                 <strong>Nome: </strong>{{ filme.nome | uppercase }}

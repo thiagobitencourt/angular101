@@ -1,6 +1,7 @@
 function listFilmesService($http, $q, urlBase) {
     const categorias = [];
-    const filmes = [];
+    let idRandom = 0;
+    let filmesLista = [];
 
     return {
         adicionarFilme,
@@ -10,6 +11,12 @@ function listFilmesService($http, $q, urlBase) {
     }
 
     function obterFilmePorNome(nome) {
+        // return new Promise((resolve, reject) => {
+        //     // Promessas ES6
+        // });
+        let filme = filmesLista.find(filme => filme.nome === nome);
+        return $q.when(filme);
+
         return $q.when(
             { 
                 "nome": "Ferrou, acabaram as ideias!",
@@ -22,18 +29,38 @@ function listFilmesService($http, $q, urlBase) {
 
     function obterListaFilmes() {
         // chamada http backend.
+        if(filmesLista.length) {
+            return $q((resolve, reject) => {
+                mapearCategorias(angular.copy(filmesLista))
+                    .then(filmes => {
+                        resolve(filmes);
+                    });
+            });
+        }
+
         return $http.get(urlBase + '/59ceaac5130000080106084f')
             .then(result => {
                 let filmes = result.data || [];
-                obterCategorias()
-                    .then(categorias => {
-                        filmes.map(filme => {
-                            filme.categoria = categorias.find(
-                                categoria => categoria.valor === filme.categoria)
-                        });
-                    });
                 return filmes;
+            })
+            .then(filmes => {
+                filmes.map(filme => filme.id = ++idRandom);
+                filmesLista = angular.copy(filmes);
+                return filmes;
+            })
+            .then(mapearCategorias)
+    }
+
+    function mapearCategorias(filmes) {
+        return obterCategorias()
+        .then(categorias => {
+            filmes.map(filme => {
+                filme.categoria = categorias.find(categoria => { 
+                    return categoria.valor === filme.categoria
+                });
             });
+            return filmes;
+        });
     }
 
     function obterCategorias() {
@@ -43,26 +70,23 @@ function listFilmesService($http, $q, urlBase) {
     }
 
     function adicionarFilme(filme) {
-
-        return $q.when("resolvido");
-        // return $q.reject("rejeitado");
-
-        // return $q((resolve, reject) => {
-        //     filmes.push(filme);
-        //     return resolve("2345678");
-        //     // return reject('');
-        // });
-
-        // const deferred = $q.defer();
-        //     filmes.push(filme);
-        //     deferred.resolve( "2345678" );
-        // return deferred.promise;
-
-        return $http.post('http://urlmassa.com.br', filme)
-        .then(result => {
-                filme.id = result.data.id; // id: 16;
-                filmes.push(filme);
-            });
+        return $q((resolve, reject) => {
+            if(filme.id) {
+                let index = filmesLista.findIndex(fl => fl.id === filme.id);
+                if(index > -1) {
+                    filmesLista.splice(index, 1, filme);
+                }
+            } else {
+                filme.id = ++idRandom;
+                filmesLista.push(filme);
+            }
+            return resolve(filme.id);
+        });
+        // return $http.post('http://urlmassa.com.br', filme)
+        // .then(result => {
+        //         filme.id = result.data.id; // id: 16;
+        //         filmes.push(filme);
+        //     });
     }
 
     function removerFilme(filmeId) {

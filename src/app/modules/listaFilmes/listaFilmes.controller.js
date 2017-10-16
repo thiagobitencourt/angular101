@@ -28,6 +28,9 @@ function listFilmesController($state, listaFilmeService) {
     function obterFilmes() {
         listaFilmeService.obterListaFilmes()
             .then(function(filmes) {
+
+                console.log(filmes);
+
                 vm.filmes = filmes;
             });
     }

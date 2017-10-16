@@ -9,13 +9,12 @@
             placeholder="Pesquisar filme">
     </div>
 
-    <button class="btn btn-primary" ng-click="vm.adicionarFilme()">Adicionar Filme</button>
+    <button class="btn btn-primary" ng-click="vm.adicionarFilme()">
+        <i class="glyphicon glyphicon-plus"></i> Adicionar Filme</button>
 
     <div class="alert alert-danger" ng-if="vm.hasError">
         <p> Deu ruim -> {{ vm.hasError }}</p>
     </div>
-
-    <ui-view name="lista"></ui-view>
 
     <lista 
         busca="vm.buscaFilme"
