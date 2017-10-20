@@ -1,13 +1,14 @@
 function listFilmesService($http, $q, urlBase) {
+    const DBKEY = "filmes";
     const categorias = [];
-    let idRandom = 0;
     let filmesLista = [];
 
     return {
         adicionarFilme,
         obterCategorias,
         obterListaFilmes,
-        obterFilmePorNome
+        obterFilmePorNome,
+        removerFilme
     }
 
     function obterFilmePorNome(nome) {
@@ -16,15 +17,6 @@ function listFilmesService($http, $q, urlBase) {
         // });
         let filme = filmesLista.find(filme => filme.nome === nome);
         return $q.when(filme);
-
-        return $q.when(
-            { 
-                "nome": "Ferrou, acabaram as ideias!",
-                "ano": "1993",
-                "lancamento": "2017-09-29T20:14:45.557Z",
-                "categoria": "terror"
-            }
-        );
     }
 
     function obterListaFilmes() {
@@ -33,21 +25,29 @@ function listFilmesService($http, $q, urlBase) {
             return $q((resolve, reject) => {
                 mapearCategorias(angular.copy(filmesLista))
                     .then(filmes => {
-                        resolve(filmes);
+                        resolve(filmes.filter(f => !f.deleted));
                     });
             });
         }
 
-        return $http.get(urlBase + '/59ceaac5130000080106084f')
+        return $q.when(filmesLista || []);
+        return $http.get(urlBase + '/59ea5a74110000b9012677de')
             .then(result => {
                 let filmes = result.data || [];
                 return filmes;
             })
             .then(filmes => {
-                filmes.map(filme => filme.id = ++idRandom);
-                filmesLista = angular.copy(filmes);
-                return filmes;
+                filmes.map(filme => filme.id = filme.id || _getId());
+                filmesLista = filmes;
+
+                var listaAntiga = _obterFilmes() || [];
+                filmesLista = filmesLista.filter(fil => !listaAntiga.find(f => fil.id === f.id));
+
+                filmesLista = filmesLista.concat(listaAntiga);
+                _atualizaDB(filmesLista);
+                return angular.copy(filmesLista);
             })
+            .then(filmes => filmes.filter(f => !f.deleted))
             .then(mapearCategorias)
     }
 
@@ -65,6 +65,12 @@ function listFilmesService($http, $q, urlBase) {
 
     function obterCategorias() {
         // return categorias;
+        return $q.when([
+            { "nome": "Ação", "valor": "acao" },
+            { "nome": "Comédia", "valor": "comedia" },
+            { "nome": "Romance", "valor": "romance" },
+            { "nome": "Terror", "valor": "terror" }
+        ]);
             return $http.get(urlBase + '/59ceb010130000ce00060859')
             .then(result => result.data || []);
     }
@@ -77,9 +83,10 @@ function listFilmesService($http, $q, urlBase) {
                     filmesLista.splice(index, 1, filme);
                 }
             } else {
-                filme.id = ++idRandom;
+                filme.id = _getId();
                 filmesLista.push(filme);
             }
+            _atualizaDB(filmesLista);
             return resolve(filme.id);
         });
         // return $http.post('http://urlmassa.com.br', filme)
@@ -90,12 +97,34 @@ function listFilmesService($http, $q, urlBase) {
     }
 
     function removerFilme(filmeId) {
-        return $http.delete('http://urlmassa.com.br/'+ filmeId);
+        // return $http.delete('http://urlmassa.com.br/'+ filmeId);
+        var filme = filmesLista.find(f => f.id === filmeId);
+        filme.deleted = true;
+        adicionarFilme(filme);
+        return $q.when();
+        // return $q((resolve, reject) => {
+        //     let index = filmesLista.findIndex(fl => fl.id === filmeId);
+        //     filmesLista.splice(index, 1);
+        //     _atualizaDB(filmesLista);
+        //     resolve({ success: true });
+        // });
     }
 
     function atualizarFilme(filme) {
         return $http.put('http://urlmassa.com.br/' + filme.id, filme);
         // $http.patch();
+    }
+
+    function _atualizaDB(lista) {
+        localStorage.setItem(DBKEY, JSON.stringify(lista));
+    }
+
+    function _obterFilmes() {
+        return JSON.parse(localStorage.getItem(DBKEY));
+    }
+
+    function _getId() {
+        return Math.random();
     }
 }
 

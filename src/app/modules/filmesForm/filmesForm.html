@@ -1,54 +1,76 @@
 <h3>Cadastro/alteração de um filme</h3>
+<form name="vm.filmeForm" novalidate>
+    <div class="row">
+        <div class="col-md-6 form-group required" 
+            ng-class="{'has-error has-feedback': vm.filmeForm.nome.$invalid && (vm.filmeForm.nome.$dirty || vm.filmeForm.$submitted )}">
+            <label class="control-label" for="nome">Nome</label>
+            <input type="text" 
+                class="form-control" 
+                id="nome" 
+                name="nome" 
+                ng-model="vm.filme.nome"
+                required
+            >
+            <span ng-show="vm.filmeForm.nome.$invalid && (vm.filmeForm.nome.$dirty || vm.filmeForm.$submitted )" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group col-md-6 required"
+            ng-class="{'has-error has-feedback': vm.filmeForm.categoria.$invalid && (vm.filmeForm.categoria.$dirty || vm.filmeForm.$submitted )}">
+            <label>Categoria</label>
+            <select name="categoria"
+                class="form-control" 
+                ng-options="categoria.valor as categoria.nome for categoria in vm.categorias" 
+                ng-model="vm.filme.categoria"
+                required
+                ><option value="">Selecione uma categoria...</option>
+            </select>
+            <span ng-show="vm.filmeForm.categoria.$invalid && (vm.filmeForm.categoria.$dirty || vm.filmeForm.$submitted )" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+        
+        <div class="col-md-6 form-group required" 
+            ng-class="{'has-error has-feedback': vm.filmeForm.ano.$invalid && (vm.filmeForm.ano.$dirty || vm.filmeForm.$submitted )}">
+            <label class="control-label" for="ano">Ano</label>
+            <input type="text" 
+                class="form-control" 
+                id="ano" 
+                name="ano" 
+                ng-model="vm.filme.ano"
+                required
+            >
+            <span ng-show="vm.filmeForm.ano.$invalid && (vm.filmeForm.ano.$dirty || vm.filmeForm.$submitted )" class="glyphicon glyphicon-remove form-control-feedback"></span>
+        </div>
+        
+        <div class="form-group col-md-6">
+            <label>Data de lançamento</label>
+            <input type="text" name="dataLancamento" class="form-control" ng-model="vm.filme.lancamento">
+        </div>
 
-<!-- 
-    Nome, 
-    categoria
-    ano
-    lançamento
-    arrecadação
- -->
-
-<div class="row">
-    <div class="form-group col-md-6">
-        <label>Nome</label>
-        <input type="text" class="form-control" ng-model="vm.filme.nome">
-    </div>
-    
-    <div class="form-group col-md-6">
-        <label>Categoria</label>
-        <select class="form-control" ng-options="categoria.valor as categoria.nome for categoria in vm.categorias" ng-model="vm.filme.categoria">
-            <option value="">Selecione uma categoria...</option>
-        </select>
-    </div>
-    
-    <div class="form-group col-md-6">
-        <label>Ano</label>
-        <input type="text" class="form-control" ng-model="vm.filme.ano">
-    </div>
-    
-    <div class="form-group col-md-6">
-        <label>Data de lançamento</label>
-        <input type="text" class="form-control" ng-model="vm.filme.lancamento">
+        <div class="form-group col-md-6">
+            <label>Arrecadação</label>
+            <input type="number" name="arrecadacao" class="form-control" ng-model="vm.filme.arrecadacao">
+        </div>
     </div>
 
-    <div class="form-group col-md-6">
-        <label>Arrecadação</label>
-        <input type="number" class="form-control" ng-model="vm.filme.arrecadacao">
+    <pre>
+        {{ vm.filme | json }}
+    </pre>
+
+    <div class="alert alert-danger" ng-if="vm.filmeForm.$invalid && vm.filmeForm.$submitted">
+        <strong>Atenção!</strong> Seu formulário está com problema!
     </div>
-</div>
 
-<pre>
-    {{ vm.filme | json }}
-</pre>
-
-<div>
-    <button type="button"
-        class="btn btn-primary"
-        ng-click="vm.salvarFilme(vm.filme)"
-    ><i class="glyphicon glyphicon-send"></i> Salvar</button>
-    <button 
-        type="button" 
-        class="btn btn-default"
-        ui-sref="filmes"
-    ><i class="glyphicon glyphicon-hand-left"></i> Voltar</button>
-</div>
+    <div>
+        <button type="submit"
+            class="btn btn-primary"
+            ng-click="vm.salvarFilme(vm.filme)"
+        ><i class="glyphicon glyphicon-send"></i> Salvar</button>
+        <button type="button"
+            class="btn btn-default"
+            ui-sref="filmes"
+        ><i class="glyphicon glyphicon-hand-left"></i> Voltar</button>
+        <button type="reset" 
+            class="btn btn-default"
+            ng-click="vm.limpar()"
+        ><i class="fa fa-eraser"></i> Limpar campos</button>
+    </div>
+</form>

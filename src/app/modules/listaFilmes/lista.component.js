@@ -5,7 +5,8 @@ const listaComponent = {
     bindings: {
         busca: '<',
         filmes: '=',
-        onFilmeClick: '&' // @, =, &, <
+        onEditFilmeClick: '&', // @, =, &, <
+        onRemoveFilmeClick: '&'
     }
 };
 

@@ -1,0 +1,18 @@
+{
+    "menu": {
+        "children": [
+            {
+                "label": "Locadora",
+                "children": [
+                    {
+                        "label": "Lista de filmes",
+                        "path": {
+                            "category": "iframe",
+                            "menuId": "https://arq.senior.com.br/locadora/#!/filmes"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

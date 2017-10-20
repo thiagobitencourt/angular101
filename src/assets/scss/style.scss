@@ -1,8 +1,16 @@
 @import '~bootstrap/dist/css/bootstrap.css';
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css");
 
 .filmes {
     margin: 10px;
     padding: 10px;
     // background-color: 
     border: 1px solid #ccc;
+}
+
+.required label {
+    &:after {
+        color: red;
+        content: " *";
+    }
 }

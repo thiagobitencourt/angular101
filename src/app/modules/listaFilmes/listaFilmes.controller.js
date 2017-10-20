@@ -4,6 +4,7 @@ function listFilmesController($state, listaFilmeService) {
 
     vm.editarFilme = editarFilme;
     vm.adicionarFilme = adicionarFilme;
+    vm.removerFilme = removerFilme;
     
     vm.$onInit = onInit;
     // $onDestroy
@@ -22,7 +23,14 @@ function listFilmesController($state, listaFilmeService) {
         listaFilmeService.obterCategorias()
             .then(categorias => {
                 vm.categorias = categorias;
-            })
+            });
+    }
+
+    function removerFilme(filmeId) {
+        listaFilmeService.removerFilme(filmeId).then(obterFilmes);
+            // .then(listaNova => {
+            //     vm.filmes = listaNova;
+            // });
     }
 
     function obterFilmes() {

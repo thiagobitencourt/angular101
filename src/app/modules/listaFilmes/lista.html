@@ -19,10 +19,19 @@
                 <button 
                     type="button"
                     class="btn btn-link"
-                    ng-click="$ctrl.onFilmeClick({ filme: filme })"
-                ><i class="glyphicon glyphicon-pencil"></i>
+                    ng-click="$ctrl.onEditFilmeClick({ filme: filme })"
+                ><i class="fa fa-pencil"></i>
                     Editar
                 </button>
+
+                <button
+                    type="button"
+                    class="btn btn-link"
+                    ng-click="$ctrl.onRemoveFilmeClick({ filmeId: filme.id })"
+                ><i class="fa fa-trash"></i>
+                    Remover
+                </button>
+
             </div>
         </div>
     </div>
