@@ -17,8 +17,8 @@ Conteúdo treinamento Angular 1.x
 - Integração com backend ($http)
 - Directives
 - Filters
+- Formulários, mascaras e validações
 - SPA (single page applications) e ui-router
-- Internacionalização (i18n)
 
 # Senior frontend
 
