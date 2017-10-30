@@ -3,12 +3,20 @@ function listFilmesService($http, $q, urlBase) {
     const categorias = [];
     let filmesLista = [];
 
+    obterListaFilmes();
+
     return {
         adicionarFilme,
         obterCategorias,
         obterListaFilmes,
         obterFilmePorNome,
-        removerFilme
+        removerFilme,
+        isNameAvailable
+    };
+
+    function isNameAvailable(nome) {
+        const filme = !filmesLista.find(filme => filme.nome === nome);
+        return $q.when(filme);
     }
 
     function obterFilmePorNome(nome) {
@@ -30,7 +38,8 @@ function listFilmesService($http, $q, urlBase) {
             });
         }
 
-        return $q.when(filmesLista || []);
+        // return $q.when(filmesLista);
+
         return $http.get(urlBase + '/59ea5a74110000b9012677de')
             .then(result => {
                 let filmes = result.data || [];

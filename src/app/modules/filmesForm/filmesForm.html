@@ -5,6 +5,7 @@
             ng-class="{'has-error has-feedback': vm.filmeForm.nome.$invalid && (vm.filmeForm.nome.$dirty || vm.filmeForm.$submitted )}">
             <label class="control-label" for="nome">Nome</label>
             <input type="text" 
+                filme-unico
                 class="form-control" 
                 id="nome" 
                 name="nome" 
@@ -12,6 +13,9 @@
                 required
             >
             <span ng-show="vm.filmeForm.nome.$invalid && (vm.filmeForm.nome.$dirty || vm.filmeForm.$submitted )" class="glyphicon glyphicon-remove form-control-feedback"></span>
+            <p class="input-error" ng-show="vm.filmeForm.nome.$invalid && vm.filmeForm.nome.$error.unique">
+                Nome já esta em uso!
+            </p>
         </div>
         
         <div class="form-group col-md-6 required"
@@ -30,8 +34,9 @@
         <div class="col-md-6 form-group required" 
             ng-class="{'has-error has-feedback': vm.filmeForm.ano.$invalid && (vm.filmeForm.ano.$dirty || vm.filmeForm.$submitted )}">
             <label class="control-label" for="ano">Ano</label>
-            <input type="text" 
-                class="form-control" 
+            <input type="text"
+                input-number
+                class="form-control"
                 id="ano" 
                 name="ano" 
                 ng-model="vm.filme.ano"
@@ -50,10 +55,10 @@
             <input type="number" name="arrecadacao" class="form-control" ng-model="vm.filme.arrecadacao">
         </div>
     </div>
-
+<!-- 
     <pre>
-        {{ vm.filme | json }}
-    </pre>
+        {{ vm.filmeForm.nome | json }}
+    </pre>  -->
 
     <div class="alert alert-danger" ng-if="vm.filmeForm.$invalid && vm.filmeForm.$submitted">
         <strong>Atenção!</strong> Seu formulário está com problema!

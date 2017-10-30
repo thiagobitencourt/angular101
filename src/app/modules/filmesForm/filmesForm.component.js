@@ -24,7 +24,6 @@ function controller($state, listaFilmeService) {
         vm.filme = {};
         vm.filmeForm.$setPristine();
     }
-
 }
 controller.$inject = ['$state', 'listaFilmeService'];
 
