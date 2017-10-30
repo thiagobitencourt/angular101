@@ -1,13 +1,17 @@
 import template from './filmesForm.html';
 
 /* @ngInject */
-function controller($state, listaFilmeService) {
+function controller($state, toastr, listaFilmeService) {
     const vm = this;
     vm.$onInit = onInit;
     vm.salvarFilme = salvarFilme;
     vm.limpar = limpar;
 
     function onInit() { }
+
+    vm.dateOptions = {
+
+    }
 
     function salvarFilme(filme) {
         if(vm.filmeForm.$invalid) {
@@ -16,6 +20,7 @@ function controller($state, listaFilmeService) {
 
         listaFilmeService.adicionarFilme(filme)
             .then(id => {
+                toastr.success("Filme salvo com sucesso!", "Sucesso");
                 $state.go('filmes');
             });
     }
@@ -25,7 +30,7 @@ function controller($state, listaFilmeService) {
         vm.filmeForm.$setPristine();
     }
 }
-controller.$inject = ['$state', 'listaFilmeService'];
+controller.$inject = ['$state', 'toastr', 'listaFilmeService'];
 
 export default {
     template,

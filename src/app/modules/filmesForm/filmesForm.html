@@ -45,20 +45,38 @@
             <span ng-show="vm.filmeForm.ano.$invalid && (vm.filmeForm.ano.$dirty || vm.filmeForm.$submitted )" class="glyphicon glyphicon-remove form-control-feedback"></span>
         </div>
         
-        <div class="form-group col-md-6">
+        <!-- <div class="form-group col-md-6">
             <label>Data de lançamento</label>
-            <input type="text" name="dataLancamento" class="form-control" ng-model="vm.filme.lancamento">
-        </div>
+            <input type="text" name="dataLancamento" class="form-control" ng-model="vm.filme.lancamento" ui-date-mask="DD/MM/YYYY">
+        </div> -->
+
+        <div class="col-md-6 nesse-tambem">
+            <label>Data de lançamento</label>
+            <p class="input-group">
+                <input type="text" 
+                    class="form-control" 
+                    uib-datepicker-popup="dd/MM/yyyy" 
+                    ng-model="vm.filme.lancamento" 
+                    is-open="vm.popup.opened" 
+                    datepicker-options="vm.dateOptions"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="vm.popup.opened = !vm.popup.opened">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+          </div>
 
         <div class="form-group col-md-6">
             <label>Arrecadação</label>
-            <input type="number" name="arrecadacao" class="form-control" ng-model="vm.filme.arrecadacao">
+            <input type="text" name="arrecadacao" class="form-control" ng-model="vm.filme.arrecadacao" ui-number-mask="3">
         </div>
     </div>
-<!-- 
+
     <pre>
-        {{ vm.filmeForm.nome | json }}
-    </pre>  -->
+        {{ vm.filme | json }}
+    </pre> 
 
     <div class="alert alert-danger" ng-if="vm.filmeForm.$invalid && vm.filmeForm.$submitted">
         <strong>Atenção!</strong> Seu formulário está com problema!

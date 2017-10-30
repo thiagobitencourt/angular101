@@ -9,6 +9,9 @@
   "dependencies": {
     "@uirouter/angularjs": "^1.0.7",
     "angular": "^1.6.6",
+    "angular-bootstrap-npm": "^0.14.3",
+    "angular-input-masks": "^4.1.0",
+    "angular-toastr": "^2.1.1",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1"
   },

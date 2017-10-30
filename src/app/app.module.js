@@ -1,5 +1,8 @@
 import angular from 'angular';
 import bootstrap from 'bootstrap';
+import inputMasks from 'angular-input-masks';
+import uiBootstrap from 'angular-bootstrap-npm';
+import toastr from 'angular-toastr'; 
 
 import uiRouter from '@uirouter/angularjs';
 
@@ -11,6 +14,9 @@ import modules from './modules/modules.module';
 
 angular.module('app', [ 
     uiRouter,
+    toastr,
+    uiBootstrap,
+    inputMasks,
     modules
 ])
 .config(appConfig);

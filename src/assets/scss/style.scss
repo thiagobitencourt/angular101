@@ -1,4 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.css';
+@import '~angular-toastr/dist/angular-toastr.css';
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css");
 
 .filmes {
@@ -15,7 +16,7 @@
     }
 }
 
-.form-group {
+.form-group, .nesse-tambem {
     min-height: 89px;
 }
 
